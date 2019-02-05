@@ -6,8 +6,14 @@
 //}
 
 var membersArr = data.results[0].members;
+createTable(membersArr)
+addList()
 
 function createTable(array) {
+    
+    document.getElementById("senate-data").innerHTML = "";
+
+
     for (var i = 0; i < array.length; i++) {
 
         var row = document.createElement("tr");
@@ -36,41 +42,19 @@ function createTable(array) {
     }
 }
 
-createTable(membersArr)
 
 
-// Filter
 
-// var partyValues = [document.getElementById("republicanValue").value, document.getElementById("democratValue").value, document.getElementById("independentValue").value]
-// 
-// var filterParties = [];
-// 
-//var partyFilter = () => {
-//    
-//    
-//    if(document.getElementById("republicanValue").checked = true){
-//    partyValues.filter(document.getElementById("republicanValue").value)
-//    
-//    } else if (document.getElementById("democraticValue").checked = true){
-//    partyValues.filter(document.getElementById("democraticValue").value)
-//    
-//    } else if (document.getElementById("independentValue").checked = true){
-//    partyValues.filter(document.getElementById("independentValue").value)
-//    
-//    }
-//    return filterParties.push(partyValues)
-//    
-//}
-
-document.getElementById("republicanValue").addEventListener("change", saySomething);
-document.getElementById("democratValue").addEventListener("change", saySomething);
-document.getElementById("independentValue").addEventListener("change", saySomething);
+document.getElementById("republicanValue").addEventListener("click", checkboxFilter);
+document.getElementById("democratValue").addEventListener("click", checkboxFilter);
+document.getElementById("independentValue").addEventListener("click", checkboxFilter);
+document.getElementById("stateSelect").addEventListener("change", checkboxFilter)
 
 
 
 
-function saySomething() {
-//cbxs = checkbox
+function checkboxFilter() {
+    //cbxs = checkbox
     var cbxs = document.querySelectorAll("input[name=party]:checked");
     var finalArray = Array.from(cbxs).map(el => el.value);
 
@@ -80,7 +64,7 @@ function saySomething() {
 
     //    console.log(finalArray)
     if (cbxs.length === 0) {
-        return createTable(membersArr)
+        selectFilter(membersArr)
     } else {
         for (var j = 0; j < membersArr.length; j++) {
             for (var i = 0; i < finalArray.length; i++) {
@@ -89,20 +73,71 @@ function saySomething() {
                 }
             }
         }
+        selectFilter(filteredMembers)
     }
 
-    return createTable(filteredMembers)
+    
+
+}
 
 
 
+function addList() {
+    var select = document.getElementById("stateSelect");
+
+    var repeatedStates = [];
+    var nonDuplicateStates = [];
+
+    for (var i = 0; i < membersArr.length; i++) {
+        repeatedStates.push(membersArr[i].state)
+    }
+
+    for (var i = 0; i < repeatedStates.length; i++) {
+        if (!nonDuplicateStates.includes(repeatedStates[i])) {
+            nonDuplicateStates.push(repeatedStates[i])
+        }
+
+    }
+
+    nonDuplicateStates.sort()
+
+    for (var i = 0; i < nonDuplicateStates.length; i++) {
+        var option = document.createElement("option");
+        option.text = nonDuplicateStates[i];
+        select.append(option);
+
+
+    }
 }
 
 
 
 
 
+function selectFilter(filteredArray) {
+    console.log(filteredArray)
 
+    var selectedState = document.getElementById("stateSelect").value
 
+    var filteredStates = [];
+
+    
+
+    if (selectedState == "") {
+        console.log("None")
+        createTable(filteredArray)
+    } else {
+         console.log(selectedState)
+        for (var i = 0; i < filteredArray.length; i++) {
+
+            if (filteredArray[i].state === selectedState) {
+                filteredStates.push(filteredArray[i]);
+            }
+        }
+        createTable(filteredStates)
+    }
+ console.log(filteredStates)
+}
 
 
 /*
