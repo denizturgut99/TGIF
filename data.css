@@ -1,0 +1,38 @@
+footer{
+    text-align: center;
+    background-color: lightgray;
+    padding: 10px;
+    
+}
+
+body{
+    margin-right: 80px;
+    margin-left: 80px;
+    
+}
+
+.contact{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logo{
+    width: 600px;
+    height: 500px;
+}
+
+.showItem {
+    display: list-item;
+}
+.hideItem {
+    display: none;
+}
+
+#filterBoxes {
+    display: inline-block;
+}
+
+#state{
+    display: flex;
+    justify-content: flex-end;
+}
