@@ -10,7 +10,7 @@ createTable(membersArr)
 addList()
 
 function createTable(array) {
-    
+
     document.getElementById("senate-data").innerHTML = "";
 
 
@@ -34,7 +34,6 @@ function createTable(array) {
         row.insertCell().innerHTML = array[i].seniority;
         row.insertCell().innerHTML = array[i].total_votes;
         row.insertCell().innerHTML = array[i].votes_with_party_pct;
-
 
 
         document.getElementById("senate-data").append(row)
@@ -76,7 +75,7 @@ function checkboxFilter() {
         selectFilter(filteredMembers)
     }
 
-    
+
 
 }
 
@@ -121,13 +120,13 @@ function selectFilter(filteredArray) {
 
     var filteredStates = [];
 
-    
+
 
     if (selectedState == "") {
         console.log("None")
         createTable(filteredArray)
     } else {
-         console.log(selectedState)
+        console.log(selectedState)
         for (var i = 0; i < filteredArray.length; i++) {
 
             if (filteredArray[i].state === selectedState) {
@@ -136,29 +135,12 @@ function selectFilter(filteredArray) {
         }
         createTable(filteredStates)
     }
- console.log(filteredStates)
+    console.log(filteredStates)
 }
 
 
-/*
-var partyCheck = () => {
-    console.log(document.getElementById("republicanValue").value)
-    console.log(document.getElementById("democratValue").value)
-    console.log(document.getElementById("independentValue").value)
-    
-}
+//statistics
 
 
-var partyFilter = () => {
-    var parties = membersArr[i].party;
-    
-    if(document.getElementById("republicanValue").value == parties.value){
-        return parties.filter(document.getElementById("democratValue").value && document.getElementById("independentValue").value)
-    } else if (document.getElementById("democratValue").value == parties.value){
-        parties.filter(document.getElementById("republicanValue").value && document.getElementById("independentValue").value)
-    } else {
-        parties.filter(document.getElementById("republicanValue").value && document.getElementById("democratValue").value)
-    }
-    
-}
-*/
+
+
