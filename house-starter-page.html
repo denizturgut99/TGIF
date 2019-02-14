@@ -13,7 +13,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body id="house">
+    <header>
+        <div><img src="http://nerdreactor.com/wp-content/uploads/2014/06/Ottawa-Senators.png" alt="background logo">
+            <div class="headerText">Transparent Government in Fact</div>
+        </div>
+    </header>
+
     <div class="contact"><i class="far fa-envelope"></i><a href="mailto:info@tgif.net">info@tgif.net</a></div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">TGIF</a>
@@ -60,51 +66,66 @@
         <p>The major power of the House is to pass federal legislation that affects the entire country, although its bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law (unless both the House and Senate re-pass the legislation with a two-thirds majority in each chamber). The House has some exclusive powers: the power to initiate revenue bills, to impeach officials (impeached officials are subsequently tried in the Senate), and to elect the U.S. President in case there is no majority in the Electoral College.</p>
         <p>Each U.S. state is represented in the House in proportion to its population as measured in the census, but every state is entitled to at least one representative. </p>
 
-        <div id="filters">
-            <div id="filterBoxes">
-                <label for="party">Filter by party:</label>
-                <label> Republican
-                    <input id="republicanValue" type="checkbox" name="party" value="R">
-                </label>
 
-                <label> Democrat
-                    <input id="democratValue" type="checkbox" name="party" value="D">
-                </label>
 
-                <label>Independent
-                    <input id="independentValue" type="checkbox" name="party" value="I">
-                </label>
+        <div class="container" id="app">
+            <div id="filters">
+                <div id="filterBoxes">
+                    <label for="party">Filter by party:</label>
+                    <label> Republican
+                        <input v-model="checkboxes" id="republicanValue" type="checkbox" name="party" value="R">
+                    </label>
 
+                    <label> Democrat
+                        <input v-model="checkboxes" id="democratValue" type="checkbox" name="party" value="D">
+                    </label>
+
+                    <label>Independent
+                        <input v-model="checkboxes" id="independentValue" type="checkbox" name="party" value="I">
+                    </label>
+
+                </div>
+                <div id="state">
+                    <label for="stateSelect">Select State:
+                        <select id="stateSelect" name="stateSelect"  v-model="memberState">
+                            <option value="">All States</option>
+                            <option v-for="state in nonDuplicatedStates"> {{state}} </option>
+                        </select></label>
+
+                </div>
             </div>
-            <div id="state">
-                <label for="stateSelect">Select State:
-                    <select id="stateSelect" name="stateSelect">
-                        <option value="">All States</option>
-                    </select></label>
+            <table id="filterTable" class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Senators</th>
+                        <th>Party Affiliation</th>
+                        <th>State</th>
+                        <th>Seniority</th>
+                        <th>Total Votes</th>
+                        <th>% Of Votes w/ Party</th>
+                    </tr>
 
-            </div>
+                </thead>
+                <tbody id="senate-data">
+                    <tr v-for="member in table">
+                        <td><a :href="member.url"> {{member.first_name}} {{member.middle_name}} {{member.last_name}} </a></td>
+                        <td>{{member.party}}</td>
+                        <td>{{member.state}}</td>
+                        <td>{{member.seniority}}</td>
+                        <td>{{member.total_votes}}</td>
+                        <td>{{member.votes_with_party_pct}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-
-        <table class="table table-striped">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Senators</th>
-                    <th>Party Affiliation</th>
-                    <th>State</th>
-                    <th>Seniority</th>
-                    <th>Total Votes</th>
-                    <th>% Of Votes w/ Party</th>
-                </tr>
-            </thead>
-            <tbody id="senate-data"></tbody>
-        </table>
     </div>
 
 
 
     <footer><i class="far fa-copyright"></i> 2016 TGIF | All Rights Reserved</footer>
 
-    <script src="pro-congress-113-house.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!--    <script src="pro-congress-113-house.js"></script>-->
     <script src="senate-data.js" type="text/javascript"></script>
 </body>
 </html>

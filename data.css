@@ -5,6 +5,35 @@ footer{
     
 }
 
+header{
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    margin-left: -80px;
+    margin-right: -80px;
+}
+
+.headerText{
+    color:white;
+    font-size: 30px;
+    font-weight: 200;
+    font-family: Times New Roman;
+    display: flex;
+    justify-content: center;
+}
+
+header img{
+    height:300px;
+    width:500px;
+}
+
+header h1 {
+    color: white;
+    display: flex;
+    align-self: flex-end;
+    left: 100px;
+}
+
 body{
     margin-right: 80px;
     margin-left: 80px;
@@ -13,12 +42,15 @@ body{
 
 .contact{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    background-color: aquamarine;
+    margin-left: -80px;
+    margin-right: -80px;
 }
 
 .logo{
-    width: 600px;
-    height: 500px;
+    width: 400px;
+    height: 300px;
 }
 
 .showItem {
