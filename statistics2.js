@@ -32,6 +32,7 @@ window.onload = () => {
 
                         vueTable.disloyalty = statistics.disloyal;
                         vueTable.loyalty = statistics.loyal;
+                        removeLoader()
 
                     })
                     .catch(error => console.log(error))
@@ -151,6 +152,11 @@ window.onload = () => {
 
 
 
+                }
+                function removeLoader(){
+                    document.getElementById("loader").remove();
+                    document.getElementById("loader1").remove();
+                    document.getElementById("loader2").remove();
                 }
             }
         }

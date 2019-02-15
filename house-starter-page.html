@@ -87,7 +87,7 @@
                 </div>
                 <div id="state">
                     <label for="stateSelect">Select State:
-                        <select id="stateSelect" name="stateSelect"  v-model="memberState">
+                        <select id="stateSelect" name="stateSelect" v-model="memberState">
                             <option value="">All States</option>
                             <option v-for="state in nonDuplicatedStates"> {{state}} </option>
                         </select></label>
@@ -119,7 +119,18 @@
             </table>
         </div>
     </div>
-
+    <div class="loading">
+        <div class="lds-roller" id="loader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
 
 
     <footer><i class="far fa-copyright"></i> 2016 TGIF | All Rights Reserved</footer>

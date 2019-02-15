@@ -34,7 +34,7 @@ window.onload = () => {
                         callAll();
                         vueTable.leastEngaged = statistics.most_missed_votes;
                         vueTable.mostEngaged = statistics.least_missed_votes;
-
+                        removeLoader()
                         //            createTable(membersArr)
                         //            addList()
                     }).catch(error => console.log(error))
@@ -154,6 +154,12 @@ window.onload = () => {
                     statistics.parties[1].pcntg_voted_w_par = Math.round(percentage_voted_w_rep);
                     statistics.parties[2].pcntg_voted_w_par = Math.round(percentage_voted_w_ind);
 
+                }
+
+                function removeLoader() {
+                    document.getElementById("loader").remove();
+                    document.getElementById("loader1").remove();
+                    document.getElementById("loader2").remove();
                 }
             }
         }

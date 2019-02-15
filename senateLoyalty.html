@@ -17,11 +17,12 @@
 </head>
 
 <body id="senate">
-   <header>
-       <div><img src="http://nerdreactor.com/wp-content/uploads/2014/06/Ottawa-Senators.png" alt="background logo">
-           <div class="headerText">Transparent Government in Fact</div></div>
-   </header>
-   
+    <header>
+        <div><img src="http://nerdreactor.com/wp-content/uploads/2014/06/Ottawa-Senators.png" alt="background logo">
+            <div class="headerText">Transparent Government in Fact</div>
+        </div>
+    </header>
+
     <div class="contact"><i class="far fa-envelope"></i><a href="mailto:info@tgif.net">info@tgif.net</a></div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">TGIF</a>
@@ -89,9 +90,21 @@
                         <tr v-for="party in membersData">
                             <td> {{party.name}} </td>
                             <td> {{party.numOfReps}} </td>
-                            <td> {{party.pcntg_voted_w_par}} </td> 
+                            <td> {{party.pcntg_voted_w_par}} </td>
                         </tr>
                     </tbody>
+                    <div class="loading">
+                        <div class="lds-roller" id="loader">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
                 </table>
             </div>
         </div>
@@ -107,13 +120,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="member in disloyalty">
-                        <td> {{member.first_name}} {{member.middle_name}} {{member.last_name}} </td>
-                        <td> {{member.total_votes}} </td>
-                        <td> {{member.votes_with_party_pct}} </td>
-                    </tr>
+                        <tr v-for="member in disloyalty">
+                            <td> {{member.first_name}} {{member.middle_name}} {{member.last_name}} </td>
+                            <td> {{member.total_votes}} </td>
+                            <td> {{member.votes_with_party_pct}} </td>
+                        </tr>
                     </tbody>
                 </table>
+                <div class="loading">
+                    <div class="lds-roller" id="loader1">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
             </div>
             <div class="col">
                 <h2>Most Loyal (Top 10% of Party)</h2>
@@ -126,13 +151,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="member in loyalty">
-                        <td> {{member._first_name}} {{member.middle_name}} {{member.last_name}} </td>
-                        <td> {{member.total_votes}} </td>
-                        <td> {{member.votes_with_party_pct}} </td>
-                    </tr>
+                        <tr v-for="member in loyalty">
+                            <td> {{member._first_name}} {{member.middle_name}} {{member.last_name}} </td>
+                            <td> {{member.total_votes}} </td>
+                            <td> {{member.votes_with_party_pct}} </td>
+                        </tr>
                     </tbody>
                 </table>
+                <div class="loading">
+                    <div class="lds-roller" id="loader2">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
