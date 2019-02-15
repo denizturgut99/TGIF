@@ -90,7 +90,7 @@
                         <tr v-for="party in membersData">
                             <td> {{party.name}} </td>
                             <td> {{party.numOfReps}} </td>
-                            <td> {{party.pcntg_voted_w_par}} </td>
+                            <td> {{party.pcntg_voted_w_par}} % </td>
                         </tr>
                     </tbody>
                     <div class="loading">
@@ -123,7 +123,7 @@
                         <tr v-for="member in disloyalty">
                             <td> {{member.first_name}} {{member.middle_name}} {{member.last_name}} </td>
                             <td> {{member.total_votes}} </td>
-                            <td> {{member.votes_with_party_pct}} </td>
+                            <td> {{member.votes_with_party_pct}} % </td>
                         </tr>
                     </tbody>
                 </table>
@@ -154,7 +154,7 @@
                         <tr v-for="member in loyalty">
                             <td> {{member._first_name}} {{member.middle_name}} {{member.last_name}} </td>
                             <td> {{member.total_votes}} </td>
-                            <td> {{member.votes_with_party_pct}} </td>
+                            <td> {{member.votes_with_party_pct}} % </td>
                         </tr>
                     </tbody>
                 </table>

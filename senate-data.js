@@ -1,3 +1,15 @@
+//Vue.component("createTable", {
+//   props: ["member"],
+//   template: "<tr v-for="member in table">
+//                    <td><a :href="member.url">{{member.first_name}} {{member.middle_name}} {{member.last_name}}</a></td>
+//                    <td>{{member.party}}</td>
+//                    <td>{{member.state}}</td>
+//                    <td>{{member.seniority}}</td>
+//                    <td>{{member.total_votes}}</td>
+//                    <td>{{member.votes_with_party_pct}}</td>
+//                </tr>",
+//})
+
 var vueTable = new Vue({
     el: "#app",
     data: {

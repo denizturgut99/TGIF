@@ -51,7 +51,12 @@ window.onload = () => {
                         "name": "Independent",
                         "numOfReps": 0,
                         "pcntg_voted_w_par": 0,
-    }, ],
+    }, {
+                        "name": "Total",
+                        "numOfReps": 0,
+                        "pcntg_voted_w_par": "--",
+                        
+    },],
                     "disloyal": null,
                     "loyal": null,
                     "num_party_votes": 0,
@@ -74,28 +79,33 @@ window.onload = () => {
                     var repCount = 0;
                     var demCount = 0;
                     var indCount = 0;
+                    var totalNum = 0;
+                    
                     for (var i = 0; i < membersArr.length; i++) {
                         if (membersArr[i].party == "R") {
                             repCount++;
+                            totalNum++;
                         }
                     }
 
                     for (var i = 0; i < membersArr.length; i++) {
                         if (membersArr[i].party == "D") {
                             demCount++;
+                            totalNum++;
                         }
                     }
 
                     for (var i = 0; i < membersArr.length; i++) {
                         if (membersArr[i].party == "I") {
                             indCount++;
+                            totalNum++;
                         }
                     }
 
                     statistics.parties[0].numOfReps = demCount;
                     statistics.parties[1].numOfReps = repCount;
                     statistics.parties[2].numOfReps = indCount;
-
+                    statistics.parties[3].numOfReps = totalNum;
 
 
                     var percentage_voted_w_dem = 0;

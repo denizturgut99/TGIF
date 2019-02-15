@@ -94,7 +94,7 @@
                         <tr v-for="party in membersData">
                             <td> {{party.name}} </td>
                             <td> {{party.numOfReps}} </td>
-                            <td> {{party.pcntg_voted_w_par}} </td>
+                            <td> {{party.pcntg_voted_w_par}} % </td>
                         </tr>
                     </tbody>
                 </table>
@@ -127,7 +127,7 @@
                         <tr v-for="member in leastEngaged">
                             <td> {{member.first_name}} {{member.middle_name}} {{member.last_name}} </td>
                             <td> {{member.missed_votes}} </td>
-                            <td> {{member.missed_votes_pct}} </td>
+                            <td> {{member.missed_votes_pct}} % </td>
                         </tr>
                     </tbody>
                 </table>
@@ -158,7 +158,7 @@
                         <tr v-for="member in mostEngaged">
                             <td> {{member.first_name}} {{member.middle_name}} {{member.last_name}} </td>
                             <td> {{member.missed_votes}} </td>
-                            <td> {{member.missed_votes_pct}} </td>
+                            <td> {{member.missed_votes_pct}} % </td>
                         </tr>
 
                     </tbody>
