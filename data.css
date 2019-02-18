@@ -11,8 +11,13 @@ footer{
     align-content: center;
 }
 
+.navLogo{
+    width: 40px;
+    height: 40px;
+}
+
 header{
-    background-color: lightgray;
+    background-size: cover;
     display: flex;
     justify-content: center;
     margin-left: -80px;
@@ -20,7 +25,7 @@ header{
 }
 
 .headerText{
-    color:black;
+    color:darkblue;
     font-size: 30px;
     font-weight: 200;
     font-family: Times New Roman;
@@ -43,7 +48,6 @@ header h1 {
 body{
     margin-right: 80px;
     margin-left: 80px;
-    
 }
 
 .contact{
@@ -159,4 +163,9 @@ body{
   100% {
     transform: rotate(360deg);
   }
+}
+
+.col-3 img{
+    height: 300px;
+    width: 300px;
 }

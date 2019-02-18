@@ -151,11 +151,27 @@ window.onload = () => {
 
                     var tenpct = membersArr.length / 10
 
-                    var bottom10 = sortedValues.slice(0, tenpct)
-                    var top10 = sortedValues.slice(membersArr.length - tenpct, membersArr.length)
+                    var bottom10 = sortedValues.slice(0, tenpct);
+                    var top10 = sortedValues.slice(membersArr.length - tenpct, membersArr.length);
+                    var bottom10NonDup;
+                    var top10NonDup;
+                    
+                    for(var i = 0; i < membersArr.length; i++){
+                        if(membersArr[i].votes_with_party_pct == bottom10[bottom10.length - 1].votes_with_party_pct){
+                            bottom10.push(membersArr[i]);
+                            bottom10NonDup = [...new Set(bottom10)]
+                        }
+                    }
+                    
+                    for(var j = 0; j < membersArr.length; j++){
+                        if(membersArr[j].votes_with_party_pct == top10[top10.length - 1].votes_with_party_pct){
+                            top10.push(membersArr[j]);
+                            top10NonDup = [...new Set(top10)]
+                        }
+                    }
 
-                    statistics.disloyal = bottom10;
-                    statistics.loyal = top10;
+                    statistics.disloyal = bottom10NonDup;
+                    statistics.loyal = top10NonDup;
                     statistics.parties[0].pcntg_voted_w_par = Math.round(percentage_voted_w_dem);
                     statistics.parties[1].pcntg_voted_w_par = Math.round(percentage_voted_w_rep);
                     statistics.parties[2].pcntg_voted_w_par = Math.round(percentage_voted_w_ind);

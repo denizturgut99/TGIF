@@ -32,9 +32,11 @@ window.onload = () => {
                         vueTable.membersData = statistics.parties;
 
                         callAll();
+                        
                         vueTable.leastEngaged = statistics.most_missed_votes;
                         vueTable.mostEngaged = statistics.least_missed_votes;
-                        removeLoader()
+                        removeLoader();
+
                         //            createTable(membersArr)
                         //            addList()
                     }).catch(error => console.log(error))
@@ -148,17 +150,44 @@ window.onload = () => {
 
                     var leastMissedVotes = sortedMissedVotes.slice(0, tenpct)
                     var mostMissedVotes = sortedMissedVotes.slice(membersArr.length - tenpct, membersArr.length)
+                    var leastMissedNonDup;
+                    var mostMissedNonDup;
+                    
+                    for(var i = 0; i < membersArr.length; i++){
+                        if(membersArr[i].missed_votes_pct == leastMissedVotes[leastMissedVotes.length - 1].missed_votes_pct){
+                            leastMissedVotes.push(membersArr[i])
+                            leastMissedNonDup = [...new Set(leastMissedVotes)]
+                            
+                        }
+                    };
+                    
+                    for(var j = 0; j < membersArr.length; j++){
+                        if(membersArr[j].missed_votes_pct == mostMissedVotes[mostMissedVotes.length - 1].missed_votes_pct){
+                            mostMissedVotes.push(membersArr[j])
+                            mostMissedNonDup = [...new Set(mostMissedVotes)]
+                        }
+                    }
+
+//                    function mostMissedFunc() {
+//                        for (var i = 0; i < membersArr.length; i++) {
+//                            for (var j = 0; j < leastMissedVotes.length; j++) {
+//                                if (membersArr.missed_votes_pct[i] == leastMissedVotes.length[j - 1]) {
+//                                    mostMissedVotes.push(membersArr.missed_votes_pct[i])
+//                                }
+//                            }
+//                        }
+//                    }
 
                     //var bottom10 = sortedValues.slice(0, tenpct)
                     //var top10 = sortedValues.slice(membersArr.length - tenpct, membersArr.length)
-                    
-                    
+
+
                     statistics.parties[0].numOfReps = demCount;
                     statistics.parties[1].numOfReps = repCount;
                     statistics.parties[2].numOfReps = indCount;
                     statistics.parties[3].numOfReps = totalNumOfReps;
-                    statistics.least_missed_votes = leastMissedVotes;
-                    statistics.most_missed_votes = mostMissedVotes;
+                    statistics.least_missed_votes = leastMissedNonDup;
+                    statistics.most_missed_votes = mostMissedNonDup;
                     //statistics.disloyal = bottom10;
                     //statistics.loyal = top10;
                     statistics.parties[0].pcntg_voted_w_par = Math.round(percentage_voted_w_dem);
