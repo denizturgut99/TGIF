@@ -32,10 +32,11 @@ window.onload = () => {
                         vueTable.membersData = statistics.parties;
 
                         callAll();
-                        
+
                         vueTable.leastEngaged = statistics.most_missed_votes;
                         vueTable.mostEngaged = statistics.least_missed_votes;
                         removeLoader();
+                        hideTable();
 
                         //            createTable(membersArr)
                         //            addList()
@@ -47,19 +48,23 @@ window.onload = () => {
                         "name": "Democrats",
                         "numOfReps": 0,
                         "pcntg_voted_w_par": 0,
+                        "pcntg": "%",
     }, {
                         "name": "Republicans",
                         "numOfReps": 0,
                         "pcntg_voted_w_par": 0,
+                        "pcntg": "%",
     }, {
                         "name": "Independent",
                         "numOfReps": 0,
                         "pcntg_voted_w_par": 0,
+                        "pcntg": "%",
 
     }, {
                         "name": "Total",
                         "numOfReps": 0,
-                        "pcntg_voted_w_par": "--",
+                        "pcntg_voted_w_par": 0,
+                        "pcntg": "%",
 
     }, ],
                     "disloyal": null,
@@ -127,6 +132,16 @@ window.onload = () => {
 
                     }
 
+                    var percentageNums = [percentage_voted_w_dem, percentage_voted_w_rep, percentage_voted_w_ind];
+                    var sumOfNums;
+                    var averageOfNums;
+
+                    percentageNums = percentageNums.filter(function (percentageNums) {
+                        return percentageNums > 0
+                    });
+                    sumOfNums = percentage_voted_w_dem + percentage_voted_w_rep + percentage_voted_w_ind;
+                    averageOfNums = sumOfNums / percentageNums.length;
+
                     //var sum = 0;
                     //for(var i = 0; i < membersArr.length; i++){
                     //    if(membersArr[i].votes_with_party_pct < 100){
@@ -152,35 +167,36 @@ window.onload = () => {
                     var mostMissedVotes = sortedMissedVotes.slice(membersArr.length - tenpct, membersArr.length)
                     var leastMissedNonDup;
                     var mostMissedNonDup;
-                    
-                    for(var i = 0; i < membersArr.length; i++){
-                        if(membersArr[i].missed_votes_pct == leastMissedVotes[leastMissedVotes.length - 1].missed_votes_pct){
+
+                    for (var i = 0; i < membersArr.length; i++) {
+                        if (membersArr[i].missed_votes_pct == leastMissedVotes[leastMissedVotes.length - 1].missed_votes_pct) {
                             leastMissedVotes.push(membersArr[i])
                             leastMissedNonDup = [...new Set(leastMissedVotes)]
-                            
+
                         }
                     };
-                    
-                    for(var j = 0; j < membersArr.length; j++){
-                        if(membersArr[j].missed_votes_pct == mostMissedVotes[mostMissedVotes.length - 1].missed_votes_pct){
+
+                    for (var j = 0; j < membersArr.length; j++) {
+                        if (membersArr[j].missed_votes_pct == mostMissedVotes[mostMissedVotes.length - 1].missed_votes_pct) {
                             mostMissedVotes.push(membersArr[j])
                             mostMissedNonDup = [...new Set(mostMissedVotes)]
                         }
                     }
 
-//                    function mostMissedFunc() {
-//                        for (var i = 0; i < membersArr.length; i++) {
-//                            for (var j = 0; j < leastMissedVotes.length; j++) {
-//                                if (membersArr.missed_votes_pct[i] == leastMissedVotes.length[j - 1]) {
-//                                    mostMissedVotes.push(membersArr.missed_votes_pct[i])
-//                                }
-//                            }
-//                        }
-//                    }
+
+
+                    //                    function mostMissedFunc() {
+                    //                        for (var i = 0; i < membersArr.length; i++) {
+                    //                            for (var j = 0; j < leastMissedVotes.length; j++) {
+                    //                                if (membersArr.missed_votes_pct[i] == leastMissedVotes.length[j - 1]) {
+                    //                                    mostMissedVotes.push(membersArr.missed_votes_pct[i])
+                    //                                }
+                    //                            }
+                    //                        }
+                    //                    }
 
                     //var bottom10 = sortedValues.slice(0, tenpct)
                     //var top10 = sortedValues.slice(membersArr.length - tenpct, membersArr.length)
-
 
                     statistics.parties[0].numOfReps = demCount;
                     statistics.parties[1].numOfReps = repCount;
@@ -193,6 +209,7 @@ window.onload = () => {
                     statistics.parties[0].pcntg_voted_w_par = Math.round(percentage_voted_w_dem);
                     statistics.parties[1].pcntg_voted_w_par = Math.round(percentage_voted_w_rep);
                     statistics.parties[2].pcntg_voted_w_par = Math.round(percentage_voted_w_ind);
+                    statistics.parties[3].pcntg_voted_w_par = Math.round(averageOfNums);
 
                 }
 
@@ -200,6 +217,12 @@ window.onload = () => {
                     document.getElementById("loader").remove();
                     document.getElementById("loader1").remove();
                     document.getElementById("loader2").remove();
+                }
+
+                function hideTable() {
+                    document.getElementById("table0").classList.remove("hiddenTable")
+                    document.getElementById("table1").classList.remove("hiddenTable")
+                    document.getElementById("table2").classList.remove("hiddenTable")
                 }
             }
         }

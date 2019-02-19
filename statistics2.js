@@ -54,9 +54,9 @@ window.onload = () => {
     }, {
                         "name": "Total",
                         "numOfReps": 0,
-                        "pcntg_voted_w_par": "--",
-                        
-    },],
+                        "pcntg_voted_w_par": 0,
+
+    }, ],
                     "disloyal": null,
                     "loyal": null,
                     "num_party_votes": 0,
@@ -80,7 +80,7 @@ window.onload = () => {
                     var demCount = 0;
                     var indCount = 0;
                     var totalNum = 0;
-                    
+
                     for (var i = 0; i < membersArr.length; i++) {
                         if (membersArr[i].party == "R") {
                             repCount++;
@@ -131,6 +131,19 @@ window.onload = () => {
 
                     }
 
+                    var percentageNums = [percentage_voted_w_dem, percentage_voted_w_rep, percentage_voted_w_ind];
+                    var sumOfNums;
+                    var averageOfNums;
+
+                    percentageNums = percentageNums.filter(function (percentageNums) {
+                        return percentageNums > 0
+                    });
+                    sumOfNums = percentage_voted_w_dem + percentage_voted_w_rep + percentage_voted_w_ind;
+                    averageOfNums = sumOfNums / percentageNums.length;
+
+
+
+
                     //var sum = 0;
                     //for(var i = 0; i < membersArr.length; i++){
                     //    if(membersArr[i].votes_with_party_pct < 100){
@@ -155,16 +168,16 @@ window.onload = () => {
                     var top10 = sortedValues.slice(membersArr.length - tenpct, membersArr.length);
                     var bottom10NonDup;
                     var top10NonDup;
-                    
-                    for(var i = 0; i < membersArr.length; i++){
-                        if(membersArr[i].votes_with_party_pct == bottom10[bottom10.length - 1].votes_with_party_pct){
+
+                    for (var i = 0; i < membersArr.length; i++) {
+                        if (membersArr[i].votes_with_party_pct == bottom10[bottom10.length - 1].votes_with_party_pct) {
                             bottom10.push(membersArr[i]);
                             bottom10NonDup = [...new Set(bottom10)]
                         }
                     }
-                    
-                    for(var j = 0; j < membersArr.length; j++){
-                        if(membersArr[j].votes_with_party_pct == top10[top10.length - 1].votes_with_party_pct){
+
+                    for (var j = 0; j < membersArr.length; j++) {
+                        if (membersArr[j].votes_with_party_pct == top10[top10.length - 1].votes_with_party_pct) {
                             top10.push(membersArr[j]);
                             top10NonDup = [...new Set(top10)]
                         }
@@ -175,11 +188,13 @@ window.onload = () => {
                     statistics.parties[0].pcntg_voted_w_par = Math.round(percentage_voted_w_dem);
                     statistics.parties[1].pcntg_voted_w_par = Math.round(percentage_voted_w_rep);
                     statistics.parties[2].pcntg_voted_w_par = Math.round(percentage_voted_w_ind);
+                    statistics.parties[3].pcntg_voted_w_par = Math.round(averageOfNums)
 
 
 
                 }
-                function removeLoader(){
+
+                function removeLoader() {
                     document.getElementById("loader").remove();
                     document.getElementById("loader1").remove();
                     document.getElementById("loader2").remove();

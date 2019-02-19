@@ -21,7 +21,7 @@
         </div>
     </header>
 
-    <div class="contact"><i class="far fa-envelope"></i><a href="mailto:info@tgif.net">info@tgif.net</a></div>
+    <div class="contact"><i class="far fa-envelope" id="space"></i><a href="mailto:info@tgif.net">info@tgif.net</a></div>
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black" id="nav">
         <a class="navbar-brand" href="#"><img src="http://dlsdc.com/images/general/whoweservegovernment2.png" alt="logo" class="navLogo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,6 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="index.html">Home </a>
                 </li>
-
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -62,38 +61,15 @@
         </div>
     </nav>
 
-
-    <header>
-        <div>
-        </div>
-    </header>
     <!--Table container-->
-    <div>
+    <div class="container">
+
         <h2>Senators</h2>
+
+
         <p>First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.</p>
 
-
-
-        <!--
-        <table id="filterTable" class="table table-striped">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Senators</th>
-                    <th>Party Affiliation</th>
-                    <th>State</th>
-                    <th>Seniority</th>
-                    <th>Total Votes</th>
-                    <th>% Of Votes w/ Party</th>
-                </tr>
-
-            </thead>
-            <tbody id="senate-data"></tbody>
-        </table>
--->
-
     </div>
-
-
 
     <div class="container" id="app">
 
@@ -108,20 +84,20 @@
                     <input v-model="checkboxes" id="democratValue" type="checkbox" name="party" value="D">
                 </label>
 
-                <label>Independent
+                <label> Independent
                     <input v-model="checkboxes" id="independentValue" type="checkbox" name="party" value="I">
                 </label>
 
             </div>
 
-        </div>
-        <div id="state">
-            <label for="stateSelect">Select State:
-                <select v-model="memberState" id="stateSelect">
-                    <option value="">All States</option>
-                    <option v-for="state in nonDuplicatedStates"> {{state}} </option>
-                </select></label>
+            <div id="stateFilterBox">
+                <label for="stateSelect">Select State:
+                    <select v-model="memberState" id="stateSelect">
+                        <option value="">All States</option>
+                        <option v-for="state in nonDuplicatedStates"> {{state}} </option>
+                    </select></label>
 
+            </div>
         </div>
         <table id="filterTable" class="table table-striped">
             <thead class="thead-dark">
