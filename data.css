@@ -68,6 +68,10 @@ label{
     display: none;
 }
 
+table{
+    table-layout: fixed;
+}
+
 .lds-roller {
   display: inline-block;
   position: relative;

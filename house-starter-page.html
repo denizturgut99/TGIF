@@ -68,32 +68,33 @@
     </div>
 
 
-        <div class="container" id="app">
-            <div id="filters">
-                <div id="filterBoxes">
-                    <label for="party">Filter by party:</label>
-                    <label> Republican
-                        <input v-model="checkboxes" id="republicanValue" type="checkbox" name="party" value="R">
-                    </label>
+    <div class="container" id="app">
+        <div id="filters">
+            <div id="filterBoxes">
+                <label for="party">Filter by party:</label>
+                <label> Republican
+                    <input v-model="checkboxes" id="republicanValue" type="checkbox" name="party" value="R">
+                </label>
 
-                    <label> Democrat
-                        <input v-model="checkboxes" id="democratValue" type="checkbox" name="party" value="D">
-                    </label>
+                <label> Democrat
+                    <input v-model="checkboxes" id="democratValue" type="checkbox" name="party" value="D">
+                </label>
 
-                    <label>Independent
-                        <input v-model="checkboxes" id="independentValue" type="checkbox" name="party" value="I">
-                    </label>
+                <label>Independent
+                    <input v-model="checkboxes" id="independentValue" type="checkbox" name="party" value="I">
+                </label>
 
-                </div>
-                <div id="state">
-                    <label for="stateSelect">Select State:
-                        <select id="stateSelect" name="stateSelect" v-model="memberState">
-                            <option value="">All States</option>
-                            <option v-for="state in nonDuplicatedStates"> {{state}} </option>
-                        </select></label>
-
-                </div>
             </div>
+            <div id="state">
+                <label for="stateSelect">Select State:
+                    <select id="stateSelect" name="stateSelect" v-model="memberState">
+                        <option value="">All States</option>
+                        <option v-for="state in nonDuplicatedStates"> {{state}} </option>
+                    </select></label>
+
+            </div>
+        </div>
+        <div id="table0" class="hiddenTable">
             <table id="filterTable" class="table table-striped">
                 <thead class="thead-dark">
                     <tr>
@@ -118,6 +119,8 @@
                 </tbody>
             </table>
         </div>
+        <div id="noValue" class="hiddenTable"><p>No results found!</p></div>
+    </div>
     <div class="loading">
         <div class="lds-roller" id="loader">
             <div></div>

@@ -32,7 +32,8 @@ window.onload = () => {
 
                         vueTable.disloyalty = statistics.disloyal;
                         vueTable.loyalty = statistics.loyal;
-                        removeLoader()
+                        removeLoader();
+                        hideTable();
 
                     })
                     .catch(error => console.log(error))
@@ -133,7 +134,7 @@ window.onload = () => {
 
                     var percentageNums = [percentage_voted_w_dem, percentage_voted_w_rep, percentage_voted_w_ind];
                     var sumOfNums;
-                    var averageOfNums;
+                    var sumOfNums;
 
                     percentageNums = percentageNums.filter(function (percentageNums) {
                         return percentageNums > 0
@@ -198,6 +199,12 @@ window.onload = () => {
                     document.getElementById("loader").remove();
                     document.getElementById("loader1").remove();
                     document.getElementById("loader2").remove();
+                }
+
+                function hideTable() {
+                    document.getElementById("table0").classList.remove("hiddenTable");
+                    document.getElementById("table1").classList.remove("hiddenTable");
+                    document.getElementById("table2").classList.remove("hiddenTable");
                 }
             }
         }

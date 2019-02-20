@@ -88,14 +88,14 @@
                             <tr>
                                 <th>Party</th>
                                 <th>Number of Reps</th>
-                                <th>% Voted with Prty</th>
+                                <th>% Voted with Party</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="party in membersData">
                                 <td> {{party.name}} </td>
                                 <td> {{party.numOfReps}} </td>
-                                <td> {{party.pcntg_voted_w_par}} {{party.pcntg}} </td>
+                                <td> {{party.pcntg_voted_w_par}}% </td>
                             </tr>
                         </tbody>
                     </table>
@@ -122,7 +122,7 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th>Name</th>
-                                <th>Number of Missed Votes</th>
+                                <th>Missed Votes</th>
                                 <th>% Missed</th>
                             </tr>
                         </thead>
@@ -155,7 +155,7 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th>Name</th>
-                                <th>Number of Missed Votes</th>
+                                <th>Missed Votes</th>
                                 <th>% Missed</th>
                             </tr>
                         </thead>

@@ -99,29 +99,31 @@
 
             </div>
         </div>
-        <table id="filterTable" class="table table-striped">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Senators</th>
-                    <th>Party Affiliation</th>
-                    <th>State</th>
-                    <th>Seniority</th>
-                    <th>Total Votes</th>
-                    <th>% Of Votes w/ Party</th>
-                </tr>
+        <div id="table0" class="hiddenTable">
+            <table id="filterTable" class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Senators</th>
+                        <th>Party Affiliation</th>
+                        <th>State</th>
+                        <th>Seniority</th>
+                        <th>Total Votes</th>
+                        <th>% Of Votes w/ Party</th>
+                    </tr>
 
-            </thead>
-            <tbody>
-                <tr v-for="member in table">
-                    <td><a :href="member.url">{{member.first_name}} {{member.middle_name}} {{member.last_name}}</a></td>
-                    <td>{{member.party}}</td>
-                    <td>{{member.state}}</td>
-                    <td>{{member.seniority}}</td>
-                    <td>{{member.total_votes}}</td>
-                    <td>{{member.votes_with_party_pct}}</td>
-                </tr>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <tr v-for="member in table">
+                        <td><a :href="member.url">{{member.first_name}} {{member.middle_name}} {{member.last_name}}</a></td>
+                        <td>{{member.party}}</td>
+                        <td>{{member.state}}</td>
+                        <td>{{member.seniority}}</td>
+                        <td>{{member.total_votes}}</td>
+                        <td>{{member.votes_with_party_pct}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     <div class="loading">
         <div class="lds-roller" id="loader">
