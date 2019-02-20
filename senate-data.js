@@ -77,7 +77,7 @@ var vueTable = new Vue({
             }
 
             function showNoResult() {
-                var res = vueTable.computed.table
+                var res = vueTable.table
                 console.log(res)
                 if (res.length == 0) {
                     document.getElementById("noValue").classList.remove("hiddenTable");
