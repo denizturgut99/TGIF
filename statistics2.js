@@ -134,7 +134,7 @@ window.onload = () => {
 
                     var percentageNums = [percentage_voted_w_dem, percentage_voted_w_rep, percentage_voted_w_ind];
                     var sumOfNums;
-                    var sumOfNums;
+                    var averageOfNums;
 
                     percentageNums = percentageNums.filter(function (percentageNums) {
                         return percentageNums > 0
@@ -142,15 +142,6 @@ window.onload = () => {
                     sumOfNums = percentage_voted_w_dem + percentage_voted_w_rep + percentage_voted_w_ind;
                     averageOfNums = sumOfNums / percentageNums.length;
 
-
-
-
-                    //var sum = 0;
-                    //for(var i = 0; i < membersArr.length; i++){
-                    //    if(membersArr[i].votes_with_party_pct < 100){
-                    //        sum += membersArr[i].votes_with_party_pct / 10
-                    //    }
-                    //}
 
                     var allValues = [];
 
@@ -211,57 +202,3 @@ window.onload = () => {
     });
     vueTable.callAllFuncs()
 }
-
-
-
-
-//function numTable(){
-//    document.getElementById("senate-glance").innerHTML = "";
-//    for(var i = 0; i < partiesArr.length; i++){
-//        var row = document.createElement("tr");
-//        var data = document.createElement("td");
-//        
-//        row.insertCell().innerHTML = partiesArr[i].name;
-//        row.insertCell().innerHTML = partiesArr[i].numOfReps;
-//        row.insertCell().innerHTML = partiesArr[i].pcntg_voted_w_par;
-//        
-//        document.getElementById("senate-glance").append(row)
-//    }
-//}
-//numTable();
-//
-//function loyalTable(){
-//    document.getElementById("mostLoyal").innerHTML = "";
-//    for(var i = 0; i < statistics.loyal.length; i++){
-//        var row = document.createElement("tr");
-//        var link = document.createElement("a");
-//        
-//        link.textContent = statistics.loyal[i].first_name + " " + (statistics.loyal[i].middle_name || "") + " " + statistics.loyal[i].last_name;
-//        link.setAttribute("href", statistics.loyal[i].url);
-//        row.insertCell().append(link);
-//        
-//        row.insertCell().innerHTML = statistics.loyal[i].total_votes;
-//        row.insertCell().innerHTML = statistics.loyal[i].votes_with_party_pct;
-//        
-//        document.getElementById("mostLoyal").append(row)
-//    }
-//}
-//loyalTable();
-//
-//function disloyalTable(){
-//    document.getElementById("leastLoyal").innerHTML = "";
-//    for(var i = 0; i < statistics.disloyal.length; i++){
-//        var row = document.createElement("tr");
-//        var link = document.createElement("a");
-//        
-//        link.textContent = statistics.disloyal[i].first_name + " " + (statistics.disloyal[i].middle_name || "") + " " + statistics.disloyal[i].last_name;
-//        link.setAttribute("href", statistics.disloyal[i].url);
-//        row.insertCell().append(link);
-//        
-//        row.insertCell().innerHTML = statistics.disloyal[i].total_votes;
-//        row.insertCell().innerHTML = statistics.disloyal[i].votes_with_party_pct;
-//        
-//        document.getElementById("leastLoyal").append(row)
-//    }
-//}
-//disloyalTable();

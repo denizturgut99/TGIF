@@ -85,26 +85,26 @@ window.onload = () => {
                     var repCount = 0;
                     var demCount = 0;
                     var indCount = 0;
-                    var totalNumOfReps = 0;
+                    var totalNum = 0;
 
                     for (var i = 0; i < membersArr.length; i++) {
                         if (membersArr[i].party == "R") {
                             repCount++;
-                            totalNumOfReps++;
+                            totalNum++;
                         }
                     }
 
                     for (var i = 0; i < membersArr.length; i++) {
                         if (membersArr[i].party == "D") {
                             demCount++;
-                            totalNumOfReps++;
+                            totalNum++;
                         }
                     }
 
                     for (var i = 0; i < membersArr.length; i++) {
                         if (membersArr[i].party == "I") {
                             indCount++;
-                            totalNumOfReps++;
+                            totalNum++;
                         }
                     }
 
@@ -142,15 +142,8 @@ window.onload = () => {
                     sumOfNums = percentage_voted_w_dem + percentage_voted_w_rep + percentage_voted_w_ind;
                     averageOfNums = sumOfNums / percentageNums.length;
 
-                    //var sum = 0;
-                    //for(var i = 0; i < membersArr.length; i++){
-                    //    if(membersArr[i].votes_with_party_pct < 100){
-                    //        sum += membersArr[i].votes_with_party_pct / 10
-                    //    }
-                    //}
 
                     var allValues = [];
-
 
                     for (var i = 0; i < membersArr.length; i++) {
                         if (membersArr[i].votes_with_party_pct < 100) {
@@ -183,29 +176,12 @@ window.onload = () => {
                         }
                     }
 
-
-
-                    //                    function mostMissedFunc() {
-                    //                        for (var i = 0; i < membersArr.length; i++) {
-                    //                            for (var j = 0; j < leastMissedVotes.length; j++) {
-                    //                                if (membersArr.missed_votes_pct[i] == leastMissedVotes.length[j - 1]) {
-                    //                                    mostMissedVotes.push(membersArr.missed_votes_pct[i])
-                    //                                }
-                    //                            }
-                    //                        }
-                    //                    }
-
-                    //var bottom10 = sortedValues.slice(0, tenpct)
-                    //var top10 = sortedValues.slice(membersArr.length - tenpct, membersArr.length)
-
                     statistics.parties[0].numOfReps = demCount;
                     statistics.parties[1].numOfReps = repCount;
                     statistics.parties[2].numOfReps = indCount;
-                    statistics.parties[3].numOfReps = totalNumOfReps;
+                    statistics.parties[3].numOfReps = totalNum;
                     statistics.least_missed_votes = leastMissedNonDup;
                     statistics.most_missed_votes = mostMissedNonDup;
-                    //statistics.disloyal = bottom10;
-                    //statistics.loyal = top10;
                     statistics.parties[0].pcntg_voted_w_par = Math.round(percentage_voted_w_dem);
                     statistics.parties[1].pcntg_voted_w_par = Math.round(percentage_voted_w_rep);
                     statistics.parties[2].pcntg_voted_w_par = Math.round(percentage_voted_w_ind);
@@ -230,61 +206,5 @@ window.onload = () => {
 
     vueTable.callAllFuncs()
 
-
-
-
-
-
-
-    //    function numTable() {
-    //        document.getElementById("senate-glance").innerHTML = "";
-    //        for (var i = 0; i < partiesArr.length; i++) {
-    //            var row = document.createElement("tr");
-    //            var data = document.createElement("td");
-    //
-    //            row.insertCell().innerHTML = partiesArr[i].name;
-    //            row.insertCell().innerHTML = partiesArr[i].numOfReps;
-    //            row.insertCell().innerHTML = partiesArr[i].pcntg_voted_w_par;
-    //
-    //            document.getElementById("senate-glance").append(row)
-    //        }
-    //    }
-    //    //numTable();
-    //
-    //    function leastEngagedTable() {
-    //        document.getElementById("leastEngaged").innerHTML = "";
-    //        for (var i = 0; i < statistics.most_missed_votes.length; i++) {
-    //            var row = document.createElement("tr");
-    //            var link = document.createElement("a");
-    //
-    //            link.textContent = statistics.most_missed_votes[i].first_name + " " + (statistics.most_missed_votes[i].middle_name || "") + " " + statistics.most_missed_votes[i].last_name;
-    //            link.setAttribute("href", statistics.most_missed_votes[i].url)
-    //            row.insertCell().append(link);
-    //
-    //            row.insertCell().innerHTML = statistics.most_missed_votes[i].missed_votes;
-    //            row.insertCell().innerHTML = statistics.most_missed_votes[i].missed_votes_pct;
-    //
-    //            document.getElementById("leastEngaged").append(row)
-    //        }
-    //    }
-    //    //leastEngagedTable();
-    //
-    //    function mostEngagedTable() {
-    //        document.getElementById("mostEngaged").innerHTML = "";
-    //        for (var i = 0; i < statistics.least_missed_votes.length; i++) {
-    //            var row = document.createElement("tr");
-    //            var link = document.createElement("a");
-    //
-    //            link.textContent = statistics.least_missed_votes[i].first_name + " " + (statistics.least_missed_votes[i].middle_name || "") + " " + statistics.least_missed_votes[i].last_name;
-    //            link.setAttribute("href", statistics.least_missed_votes[i].url);
-    //            row.insertCell().append(link);
-    //
-    //            row.insertCell().innerHTML = statistics.least_missed_votes[i].missed_votes;
-    //            row.insertCell().innerHTML = statistics.least_missed_votes[i].missed_votes_pct;
-    //
-    //            document.getElementById("mostEngaged").append(row)
-    //        }
-    //    }
-    //mostEngagedTable();
 
 }
