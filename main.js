@@ -252,11 +252,14 @@ var vueTable = new Vue({
 
 
             }
-
+            
             function removeLoader() {
+//                document.getElementsByClassName("loading").remove()
                 document.getElementById("loader").remove();
+                if(!document.URL.includes("starter")){
                 document.getElementById("loader1").remove();
                 document.getElementById("loader2").remove();
+                }
             }
 
             function hideTable() {
